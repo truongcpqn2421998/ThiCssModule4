@@ -23,7 +23,7 @@ successHandler();
 function getCity(city) {
     return `<tr>
                         <td> ${city.id}</td>
-                        <td >${city.name}</td>
+                        <td ><a id="${city.id}" onclick="showinfo(this)">${city.name}</td>
                         <td >${city.nation.name}</td>`+
         `<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editmodal" value="${city.id}" onclick="showEdit(this)">
                 Edit
@@ -118,6 +118,22 @@ function updateCity() {
         url: "http://localhost:8080/city/update",
         data: JSON.stringify(city),
         success: successHandler
+    })
+    event.preventDefault();
+}
+function showinfo(a){
+    let id = a.getAttribute("id");
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/city/find/" + id,
+        success: function (city) {
+            $('#nameinfo').val(city.name);
+            $('#nameinfo').val(city.nation.name);
+            $('#areainfo').val(city.area);
+            $('#populationinfo').val(city.population);
+            $('#gdpinfo').val(city.gdp);
+            $('#descriptioninfo').val(city.description);
+        }
     })
     event.preventDefault();
 }

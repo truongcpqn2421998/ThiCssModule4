@@ -68,6 +68,51 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="infoModalLabel">Create City</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td>Tên:</td>
+                        <td><input type="text" id="nameinfo" readonly ></td>
+                    </tr>
+                    <tr>
+                        <td>Quốc gia:</td>
+                        <td><input type="text" id="nationinfo" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Diện tích:</td>
+                        <td><input type="text" id="areainfo" placeholder="Diện tích" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Dân số:</td>
+                        <td><input type="text" id="populationinfo" placeholder="Dân số" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>GDP:</td>
+                        <td><input type="text" id="gdpinfo" placeholder="GDP" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Giới thiệu:</td>
+                        <td><textarea type="text" id="descriptioninfo" placeholder="giới thiệu" readonly></textarea></td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="editmodalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
