@@ -23,7 +23,9 @@ successHandler();
 function getCity(city) {
     return `<tr>
                         <td> ${city.id}</td>
-                        <td ><a id="${city.id}" onclick="showinfo(this)">${city.name}</td>
+                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#infoModal" value="${city.id}" onclick="showinfo(this)">
+                ${city.name}
+            </button></td>
                         <td >${city.nation.name}</td>`+
         `<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editmodal" value="${city.id}" onclick="showEdit(this)">
                 Edit
@@ -122,13 +124,13 @@ function updateCity() {
     event.preventDefault();
 }
 function showinfo(a){
-    let id = a.getAttribute("id");
+    let id = a.getAttribute("value");
     $.ajax({
         type: "GET",
         url: "http://localhost:8080/city/find/" + id,
         success: function (city) {
             $('#nameinfo').val(city.name);
-            $('#nameinfo').val(city.nation.name);
+            $('#nationinfo').val(city.nation.name);
             $('#areainfo').val(city.area);
             $('#populationinfo').val(city.population);
             $('#gdpinfo').val(city.gdp);
