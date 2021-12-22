@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Module 4</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="IndexCss.js"></script>
+</head>
+</head>
+
+<body>
+<h2>Danh sách thành phố</h2>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Create City
+</button>
+<table border="1" id="listCity">
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create City</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td>Tên:</td>
+                        <td><input type="text" id="name" placeholder="Name of City"></td>
+                    </tr>
+                    <tr>
+                        <td>Quốc gia:</td>
+                        <td>
+                            <select id="nation">
+
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Diện tích:</td>
+                        <td><input type="text" id="area" placeholder="Diện tích"></td>
+                    </tr>
+                    <tr>
+                        <td>Dân số:</td>
+                        <td><input type="text" id="population" placeholder="Dân số"></td>
+                    </tr>
+                    <tr>
+                        <td>GDP:</td>
+                        <td><input type="text" id="gdp" placeholder="GDP"></td>
+                    </tr>
+                    <tr>
+                        <td>Giới thiệu:</td>
+                        <td><textarea type="text" id="description" placeholder="giới thiệu"></textarea></td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" onclick="addnewcity()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="editmodalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editmodalLabel">Edit Customer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <input name="idEdit" id="idEdit" hidden>
+                    <tr>
+                        <td>Tên:</td>
+                        <td><input type="text" id="nameEdit" placeholder="Name of City"></td>
+                    </tr>
+                    <tr>
+                        <td>Quốc gia:</td>
+                        <td>
+                            <select id="nationEdit">
+
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Diện tích:</td>
+                        <td><input type="text" id="areaEdit" placeholder="Diện tích"></td>
+                    </tr>
+                    <tr>
+                        <td>Dân số:</td>
+                        <td><input type="text" id="populationEdit" placeholder="Dân số"></td>
+                    </tr>
+                    <tr>
+                        <td>GDP:</td>
+                        <td><input type="text" id="gdpEdit" placeholder="GDP"></td>
+                    </tr>
+                    <tr>
+                        <td>Giới thiệu:</td>
+                        <td><textarea type="text" id="descriptionEdit" placeholder="giới thiệu"></textarea></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="updateCity()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="deletemodalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="edeletemodalLabel">Edit Customer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input name="idDelete" id="idDelete" hidden>
+                <p>Bạn có chắc muốn xóa</p> <span id="cityDelete"><span><p>không</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="deletecity()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>
