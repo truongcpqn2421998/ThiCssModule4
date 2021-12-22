@@ -29,7 +29,7 @@ function getCity(city) {
                 Edit
             </button></td>`+
         `<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deletemodal" value="${city.id}" onclick="showdelete(this)">
-                Edit
+                Delete
             </button></td>`
 }
 function addnewcity(){
@@ -138,7 +138,7 @@ function deletecity(){
     let id = $('#idDelete').val();
     $.ajax({
         type:"DELETE",
-        url:"http://localhost:8080/city/delete"+id,
+        url:"http://localhost:8080/city/delete/"+id,
         success:successHandler
     })
     event.preventDefault();
